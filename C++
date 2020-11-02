@@ -1,0 +1,51 @@
+//Metodo de ordenemiento Quicksort
+
+#include <iostream> 
+#include<conio.h>
+using namespace std; 
+
+//Algoritmo del Metodo Quicksort
+void Quicksort(int* arr, int izq, int der) 
+{ 
+     int i = izq, j = der, tmp; 
+     //pivote
+     int p = arr[(izq + der) / 2]; 
+
+     while (i <= j) 
+     { 
+          while (arr[i] < p) i++; 
+          while (arr[j] > p) j--; 
+          if (i <= j) 
+           { 
+               tmp = arr[i]; 
+               arr[i] = arr[j]; 
+               arr[j] = tmp; 
+               i++; j--; 
+          } 
+     } 
+
+     if (izq < j) 
+          Quicksort(arr, izq, j); 
+     if (i < der) 
+          Quicksort(arr, i, der); 
+} 
+
+int main() 
+{ 
+
+    cout<< "Este es el Metodo QuickSort\n\n";
+    cout<< "Esta es la lista a ordenar\n";
+    cout<< "24, 6, 19, -12, 15, 2, 200, 4, 46, 0\n\n";
+    cout<< "La lista ya se ha ordenado:\n\n";
+     int arreglo[10] = { 24, 6, 19, -12, 15, 2, 200, 4, 46, 0 }; 
+
+     Quicksort(arreglo, 0, 9); 
+     
+//Impresion del método Quicksort
+     for(int i = 0; i < 10; i++) 
+          cout << arreglo[i] << " "; 
+
+     cout<<endl;
+	 system("pause"); 
+     return 0; 
+}
